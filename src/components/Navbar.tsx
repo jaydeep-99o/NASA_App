@@ -16,7 +16,7 @@ export default function Navbar() {
           </span>
           <span className="hidden md:inline opacity-70
                            text-xs sm:text-sm truncate">
-            • NASA Space Apps — Demo
+            • NASA Space Apps
           </span>
         </div>
 

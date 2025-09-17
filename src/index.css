@@ -1,1 +1,183 @@
 @import "tailwindcss";
+
+/* light/dark base */
+:root { color-scheme: light dark; }
+body {
+  background-color: #fff;
+  color: #171717;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+	background-color: #0a0a0a;
+	color: #f3f3f3;
+  }
+}
+/* Soft glow for readability on starfield */
+.text-glow { text-shadow: 0 1px 10px rgba(0,0,0,.45); }
+
+/* Custom Space-themed animations for Tailwind CSS v4 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+
+@keyframes nebula-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.1; }
+  33% { transform: translate(-30px, -15px) scale(1.1); opacity: 0.2; }
+  66% { transform: translate(20px, -10px) scale(0.9); opacity: 0.15; }
+}
+
+@keyframes cosmic-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.3);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes star-move {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-100vh) translateX(-50px); }
+}
+
+@keyframes aurora-dance {
+  0%, 100% { transform: skewX(0deg) scale(1); opacity: 0.1; }
+  25% { transform: skewX(2deg) scale(1.1); opacity: 0.2; }
+  50% { transform: skewX(-1deg) scale(1.05); opacity: 0.15; }
+  75% { transform: skewX(1deg) scale(1.08); opacity: 0.18; }
+}
+
+@keyframes particle-float {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate(-100px, -100px) rotate(180deg); opacity: 0; }
+}
+
+/* Utility classes for space theme */
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delay-1 { animation: float 6s ease-in-out infinite; animation-delay: -1s; }
+.animate-float-delay-2 { animation: float 6s ease-in-out infinite; animation-delay: -2s; }
+.animate-float-delay-3 { animation: float 6s ease-in-out infinite; animation-delay: -3s; }
+
+.animate-twinkle { animation: twinkle 3s ease-in-out infinite; }
+.animate-twinkle-slow { animation: twinkle 4s ease-in-out infinite; }
+.animate-twinkle-fast { animation: twinkle 2s ease-in-out infinite; }
+
+.animate-orbit { animation: orbit 20s linear infinite; }
+.animate-orbit-reverse { animation: orbit 25s linear infinite reverse; }
+.animate-orbit-fast { animation: orbit 15s linear infinite; }
+
+.animate-nebula { animation: nebula-drift 20s ease-in-out infinite; }
+.animate-cosmic-pulse { animation: cosmic-pulse 4s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.8s ease-out forwards; }
+.animate-gradient-x { animation: gradient-shift 4s ease infinite; }
+.animate-star-move { animation: star-move 15s linear infinite; }
+.animate-aurora { animation: aurora-dance 12s ease-in-out infinite; }
+.animate-particle { animation: particle-float 8s linear infinite; }
+
+/* Space background gradients */
+.bg-space-deep {
+  background: radial-gradient(ellipse at center, #0f0f23 0%, #000011 100%);
+}
+
+.bg-space-nebula {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at center, #0f0f23 0%, #000011 100%);
+}
+
+.bg-cosmic-glass {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.bg-cosmic-hover {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.text-cosmic {
+  background: linear-gradient(135deg, #ffffff, #a855f7, #3b82f6, #10b981);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stagger delays for animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Custom shadow effects */
+.shadow-cosmic {
+  box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+}
+
+.shadow-cosmic-lg {
+  box-shadow: 
+    0 25px 50px -12px rgba(59, 130, 246, 0.25),
+    0 0 0 1px rgba(59, 130, 246, 0.05);
+}
+
+.shadow-purple-glow {
+  box-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
+}
+
+.shadow-teal-glow {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.3);
+}
+
+/* Animated gradient halo for the search bar */
+.search-shell{ position:relative; border-radius:1rem; }
+.search-shell::before{
+  content:""; position:absolute; inset:-2px; border-radius:inherit;
+  background: conic-gradient(from 180deg at 50% 50%,
+    rgba(59,130,246,.55),
+    rgba(147,51,234,.55),
+    rgba(16,185,129,.55),
+    rgba(59,130,246,.55)
+  );
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity .25s ease, filter .25s ease;
+  pointer-events:none;
+}
+.search-shell:focus-within::before{ opacity:.75; filter: blur(14px); }
+
+/* Optional: softer hover */
+.search-shell:hover::before{ opacity:.35; }
+
+/* Respect effects toggle */
+.no-effects .search-shell::before{ display:none; }

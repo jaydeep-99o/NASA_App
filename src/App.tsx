@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
+import { CollectionsProvider } from "./lib/CollectionsContext";
+import "./index.css";
+import StarfieldBG from "./components/StarfieldBG"; 
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
+  const nav = useNavigate();
+  const { pathname } = useLocation();
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <CollectionsProvider>
+      <div className="min-h-screen">
+        {/* LIVE BACKGROUND */}
+        <StarfieldBG />
+        <Navbar />
+        <header className="border-b border-neutral-200 dark:border-neutral-800">
+          <div className="container mx-auto max-w-6xl py-4 flex gap-4 items-center">
+            <Link to="/" className="font-semibold text-lg">SpaceBio Atlas</Link>
+            <div className="flex-1 max-w-2xl">
+              <SearchBar onSubmit={(q) => nav(`/results?q=${encodeURIComponent(q)}`)} />
+            </div>
+            <nav className="flex gap-4 text-sm">
+              <Link to="/graph" className={pathname==="/graph" ? "font-medium" : ""}>Graph</Link>
+              <Link to="/qa" className={pathname==="/qa" ? "font-medium" : ""}>QA</Link>
+              <Link to="/collections" className={pathname==="/collections" ? "font-medium" : ""}>Collections</Link>
+            </nav>
+          </div>
+        </header>
+        <main className="container mx-auto max-w-6xl py-6">
+          <Outlet />
+        </main>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </CollectionsProvider>
+  );
 }
-
-export default App
